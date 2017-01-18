@@ -86,13 +86,13 @@ final class LiveStreamEventTests: XCTestCase {
     XCTAssertEqual("http://www.kickstarter.com", liveStreamEvent.value?.creator.avatar)
 
     // Firebase
-    XCTAssertEqual("huzza-web", liveStreamEvent.value?.firebase.project)
-    XCTAssertEqual("AIzaSyAt0TtpY7f8QL7zbuh37KwCHQzWoKJ1_pQ", liveStreamEvent.value?.firebase.apiKey)
-    XCTAssertEqual("events/path", liveStreamEvent.value?.firebase.greenRoomPath)
-    XCTAssertEqual("events/path", liveStreamEvent.value?.firebase.hlsUrlPath)
-    XCTAssertEqual("presence/path", liveStreamEvent.value?.firebase.numberPeopleWatchingPath)
-    XCTAssertEqual("globalpresence/path", liveStreamEvent.value?.firebase.scaleNumberPeopleWatchingPath)
-    XCTAssertEqual("messages/path", liveStreamEvent.value?.firebase.chatPath)
+    XCTAssertEqual("huzza-web", liveStreamEvent.value?.firebase?.project)
+    XCTAssertEqual("AIzaSyAt0TtpY7f8QL7zbuh37KwCHQzWoKJ1_pQ", liveStreamEvent.value?.firebase?.apiKey)
+    XCTAssertEqual("events/path", liveStreamEvent.value?.firebase?.greenRoomPath)
+    XCTAssertEqual("events/path", liveStreamEvent.value?.firebase?.hlsUrlPath)
+    XCTAssertEqual("presence/path", liveStreamEvent.value?.firebase?.numberPeopleWatchingPath)
+    XCTAssertEqual("globalpresence/path", liveStreamEvent.value?.firebase?.scaleNumberPeopleWatchingPath)
+    XCTAssertEqual("messages/path", liveStreamEvent.value?.firebase?.chatPath)
 
     // OpenTok
     XCTAssertEqual("45698472", liveStreamEvent.value?.openTok?.appId)
@@ -100,7 +100,7 @@ final class LiveStreamEventTests: XCTestCase {
     XCTAssertEqual("T1==cGFydG5lcl9pZD00=", liveStreamEvent.value?.openTok?.token)
 
     // User
-    XCTAssertEqual(true, liveStreamEvent.value?.user.isSubscribed)
+    XCTAssertEqual(true, liveStreamEvent.value?.user?.isSubscribed)
   }
   //swiftlint:enable function_body_length
 }
