@@ -98,7 +98,7 @@ public final class LiveStreamEventDetailsViewModel: LiveStreamEventDetailsViewMo
       isSubscribedEvent.values(),
 
       // Bind the initial subscribed value
-      event.map { $0.user.isSubscribed }
+      event.map { $0.user?.isSubscribed == .some(true) }
     )
 
     let subscribed = subscribedProperty.signal
@@ -106,7 +106,7 @@ public final class LiveStreamEventDetailsViewModel: LiveStreamEventDetailsViewMo
     self.availableForText = event
       .map { event -> String? in
         guard let availableDate = AppEnvironment.current.calendar
-          .date(byAdding: .day, value: 2, to: event.stream.startDate)?.timeIntervalSince1970
+          .date(byAdding: .day, value: 2, to: event.startDate)?.timeIntervalSince1970
           else { return nil }
 
         let (time, units) = Format.duration(secondsInUTC: availableDate, abbreviate: false)
@@ -121,8 +121,8 @@ public final class LiveStreamEventDetailsViewModel: LiveStreamEventDetailsViewMo
       .filter { AppEnvironment.current.currentUser == nil }
 
     self.creatorName = event.map { $0.creator.name }
-    self.liveStreamTitle = event.map { $0.stream.name }
-    self.liveStreamParagraph = event.map { $0.stream.description }
+    self.liveStreamTitle = event.map { $0.name }
+    self.liveStreamParagraph = event.map { $0.description }
 
     self.subscribeButtonImage = subscribed.map {
       $0 ? "postcard-checkmark" : nil

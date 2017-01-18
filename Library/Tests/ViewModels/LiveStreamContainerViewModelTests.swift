@@ -50,12 +50,10 @@ internal final class LiveStreamContainerViewModelTests: TestCase {
   }
 
   func testCreatorIntroText_Live() {
-    let stream = LiveStreamEvent.template.stream
-      |> LiveStreamEvent.Stream.lens.startDate .~ MockDate().date
     let project = Project.template
     let event = LiveStreamEvent.template
-      |> LiveStreamEvent.lens.stream .~ stream
-      |> LiveStreamEvent.lens.stream.liveNow .~ true
+      |> LiveStreamEvent.lens.startDate .~ MockDate().date
+      |> LiveStreamEvent.lens.liveNow .~ true
 
     self.creatorIntroText.assertValueCount(0)
 
@@ -66,12 +64,10 @@ internal final class LiveStreamContainerViewModelTests: TestCase {
   }
 
   func testCreatorIntroText_Replay() {
-    let stream = LiveStreamEvent.template.stream
-      |> LiveStreamEvent.Stream.lens.startDate .~ MockDate().date
     let project = Project.template
     let event = LiveStreamEvent.template
-      |> LiveStreamEvent.lens.stream .~ stream
-    |> LiveStreamEvent.lens.stream.liveNow .~ false
+      |> LiveStreamEvent.lens.liveNow .~ false
+      |> LiveStreamEvent.lens.startDate .~ MockDate().date
 
     self.creatorIntroText.assertValueCount(0)
 
@@ -118,7 +114,7 @@ internal final class LiveStreamContainerViewModelTests: TestCase {
   func testLabelVisibilities_Live() {
     let project = Project.template
     let event = LiveStreamEvent.template
-      |> LiveStreamEvent.lens.stream.liveNow .~ true
+      |> LiveStreamEvent.lens.liveNow .~ true
 
     self.navBarLiveDotImageViewHidden.assertValueCount(0)
     self.createAndConfigureLiveStreamViewController.assertValueCount(0)
@@ -137,7 +133,7 @@ internal final class LiveStreamContainerViewModelTests: TestCase {
   func testLabelVisibilities_Replay() {
     let project = Project.template
     let event = LiveStreamEvent.template
-      |> LiveStreamEvent.lens.stream.liveNow .~ false
+      |> LiveStreamEvent.lens.liveNow .~ false
 
     self.navBarLiveDotImageViewHidden.assertValueCount(0)
     self.createAndConfigureLiveStreamViewController.assertValueCount(0)
