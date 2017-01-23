@@ -111,7 +111,7 @@ extension NSUbiquitousKeyValueStore: KeyValueStoreType {
   }
 }
 
-internal class MockKeyValueStore: KeyValueStoreType {
+internal final class MockKeyValueStore: KeyValueStoreType {
   var store: [String:Any] = [:]
 
   func setBool(_ bool: Bool, forKey key: String) {

@@ -1,7 +1,7 @@
 import UIKit
 import Prelude
 
-public class ClearNavigationBar: UINavigationBar {
+public final class ClearNavigationBar: UINavigationBar {
 
   public override init(frame: CGRect) {
     super.init(frame: frame)

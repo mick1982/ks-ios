@@ -44,6 +44,8 @@ internal func pledgeContext(forProject project: Project, reward: Reward) -> Koal
  */
 internal func minAndMaxPledgeAmount(forProject project: Project, reward: Reward?) -> (min: Int, max: Int) {
 
+
+
   // The country on the project cannot be trusted to have the min/max values, so first try looking
   // up the country in our launched countries array that we get back from the server config.
   let country = AppEnvironment.current.launchedCountries.countries
